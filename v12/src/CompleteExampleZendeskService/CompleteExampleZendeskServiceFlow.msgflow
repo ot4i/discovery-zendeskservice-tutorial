@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmApplicationConnectorRequest_zendeskservice.msgnode="ComIbmApplicationConnectorRequest_zendeskservice.msgnode" xmlns:ComIbmFlowOrder.msgnode="ComIbmFlowOrder.msgnode" xmlns:ComIbmTrace.msgnode="ComIbmTrace.msgnode" xmlns:ComIbmWSInput.msgnode="ComIbmWSInput.msgnode" xmlns:ComIbmWSReply.msgnode="ComIbmWSReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility"
+    nsURI="CompleteExampleZendeskServiceFlow.msgflow" nsPrefix="CompleteExampleZendeskServiceFlow.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="CompleteExampleZendeskServiceFlow" bundleName="CompleteExampleZendeskServiceFlow" pluginId="CompleteExampleZendeskService"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/CompleteExampleZendeskService/icons/full/obj16/CompleteExampleZendeskServiceFlow.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/CompleteExampleZendeskService/icons/full/obj30/CompleteExampleZendeskServiceFlow.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="672,37" destination="file" filePath="C:\temp\TraceCompleteExampleZendeskServiceFailure.txt" pattern="========== Trace Generated at ${CURRENT_TIMESTAMP} ==========&#xD;&#xA;${Root}&#xD;&#xA;${LocalEnvironment}&#xD;&#xA;${ExceptionList}&#xD;&#xA;==================================================">
+        <translation xmi:type="utility:ConstantString" string="TraceFailure"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="672,91" destination="file" filePath="C:\temp\TraceCompleteExampleZendeskServiceOut.txt" pattern="========== Trace Generated at ${CURRENT_TIMESTAMP} ==========&#xD;&#xA;${Root}&#xD;&#xA;${LocalEnvironment}&#xD;&#xA;${ExceptionList}&#xD;&#xA;==================================================">
+        <translation xmi:type="utility:ConstantString" string="TraceOut"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFlowOrder.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="222,27">
+        <translation xmi:type="utility:ConstantString" string="Flow Order"/>
+      </nodes>
+      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="33,32" URLSpecifier="/CompleteExampleZendeskServiceFlow" messageDomainProperty="JSON">
+        <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="673,146" destination="file" filePath="C:\temp\TraceCompleteExampleZendeskServiceNoData.txt" pattern="========== Trace Generated at ${CURRENT_TIMESTAMP} ==========&#xD;&#xA;${Root}&#xD;&#xA;${LocalEnvironment}&#xD;&#xA;${ExceptionList}&#xD;&#xA;==================================================">
+        <translation xmi:type="utility:ConstantString" string="TraceNoData"/>
+      </nodes>
+      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="432,27">
+        <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
+      </nodes>
+      <nodes xmi:type="ComIbmApplicationConnectorRequest_zendeskservice.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="434,91" applicationConnectorType="zendeskservice">
+        <translation xmi:type="utility:ConstantString" string="Zendesk Service Request"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.first" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.noData" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.second" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>
