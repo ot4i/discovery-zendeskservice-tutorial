@@ -1,0 +1,306 @@
+{
+    "version": "0.1",
+    "pageContent": 
+	{
+        "_comments": "object that contains data for page labels, buttons, etc.",
+        "navItems": 
+		{
+            "_common": 
+			{
+                "buttonBackToGallery": 
+				{
+                    "name": "Back To Gallery",
+					"method": "backToGallery()",
+					"idName": "backToGallery"	
+                },
+                "buttonStartTutorial": 
+				{
+                    "name": "Start Tutorial",
+					"method": "startTutorialFromDetailsScreen()",
+					"idName": "startTutorial"
+                },
+				"buttonViewDetails": 
+				{
+                    "name": "View Details",
+					"method": "viewDetails()",
+					"idName": "stepsViewDetails"	
+                }
+            }
+        }
+    },
+    "tutorial": 
+	{
+        "_common": 
+		{
+            "name": "Discovery Connector - Using the Zendesk Service Request node",
+            "shortDescription": "Learn how to use the Zendesk Service Request node (requires v12.0.8.0 or higher)",
+            "durationText": "This tutorial takes approximately",
+            "durationTime": "10 minutes",
+            "_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json Tutorials listing on ot4i.",
+            "resourceToOpen": "MainFlow",
+            "helpLink": 
+			{
+                "text": "IBM Documentation",
+           		"link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/acesw_home.html"
+            }
+        },
+        "pageDetails": 
+		{
+            "topicsName": "Tutorial topics",
+            "_topicListComment": "A short list of product concepts or tasks demonstrated by this tutorial",
+            "topicList": 
+			[
+                {
+                    "title": "Zendesk Service Request node"
+                }
+            ],
+            "outcomesName": "Learning outcomes",
+            "_outcomesComment": "A description of what the user will have learned or accomplished by running this tutorial.",
+            "outcomeList": 
+			[
+                {
+                    "title": "Use IBM App Connect Enterprise to connect to Zendesk Service and issue requests to create, retrieve, update, download, and delete objects such as articles, tickets, ticket attachments, and users"
+                }
+            ],
+            "summary": 
+			{
+                "overviewName": "OVERVIEW",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the ACE concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "sections": 
+				[
+					{
+						"section":"Zendesk is a cloud-based customer service platform that is designed to improve communication between an organization and its customers. This tutorial demonstrates how to develop and run a message flow that connects to Zendesk and retrieves ticket information. This tutorial requires access to Zendesk. The tutorial provides a partially completed message flow and detailed steps describing the development process step-by-step. A summary of what you will do is provided here:"						
+					},
+					{
+                       "section":"1. Create a local integration server which has a vault for storing credentials"
+					},					
+					{
+                       "section":"2. Launch the connector discovery process using a policy project which will be used to store a Zendesk policy containing connection information."
+					},
+					{
+                       "section":"3. Select the object and action which the Zendesk Service Request node will execute"
+					},
+					{
+                       "section":"4. Save the results of the connector discovery process"
+					},					
+					{
+                       "section":"6. Deploy and test the message flow, policy and credentials using the local integration server"
+					},
+					{
+                       "section":"For the convenience of more experienced users, the tutorial also provides a more complete version of the message flow, for which the connector discovery process has already been completed.  Instructions describe how to edit connection information in the policy, and how to create credentials to access your own instance of Zendesk."
+					}
+                ]
+            },
+			"helpLinks": 
+			{
+				"_helpLinksComment": "Helplinks that have a type:web attribute are rendered as web links. Otherwise, links are assumed to be to embedded Help topics in the Knowledge Center.",
+				"title": "Find out more",
+				"details": 
+				[					
+					{
+						"title": "IBM Documentation link to ",
+						"description": "Connecting to Zendesk from IBM App Connect Enterprise",
+						"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=applications-connecting-zendesk-from-app-connect-enterprise",
+						"type": "web"
+					}					
+				]
+			}
+        },
+        "pageSteps": 
+		{
+            "create": 
+			{
+                "overview": 
+				{
+                    "name": "Create",
+                    "heading": "Import projects",
+                    "_createComment": "A description of what will happen when the user clicks Import.",
+                    "sections": 
+					[
+                        {
+                            "section": "When you click Import, three projects will be imported into your workspace:"
+                        },
+						{
+                            "section": "1. An application named <span class='application'>ExampleZendeskService</span>"
+                        },
+						{
+                            "section": "2. An application named <span class='application'>CompleteExampleZendeskService</span>"
+                        },
+						{
+                            "section": "3. A policy project named <span class='application'>CompletePolicyProjectZendeskService</span>"
+                        },
+						{
+                            "section": "<span class='application'>ExampleZendeskService</span> contains a single message flow named <span class='application'>ExampleZendeskServiceFlow</span>. To save you time, most of the message flow is ready for use, but the Zendesk Service Request node has not yet been configured. This tutorial will guide you through the configuration of the node. The flow is driven by an HTTP input containing any well-formed JSON data, and uses a FlowOrder node to first acknowledge the input by echoing the same data back to the requesting client. Second in the flow sequence, the Zendesk Service Request communicates with Zendesk. This node has its three output terminals (Failure, Out and NoData) wired to three separate Trace nodes to capture the results."
+                        },
+						{ 
+                        	"section":"<span class='application'>CompleteExampleZendeskService</span> is very similar to <span class='application'>ExampleZendeskService</span> but the message flow which it contains, named  <span class='application'>CompleteExampleZendeskServiceFlow</span> (which exposes a different URL Fragment), has already had its Zendesk Service Request node configured, and an associated policy with connection information has already been generated. If you're already familiar with connector discovery, this application may be helpful to demonstrate some administration concepts such as reusing discovered artifacts, editting policies and updating credentials. If you want to use this message flow, there are instructions later for updating the connection details and credentials for your Zendesk instance."
+                        },
+                        {
+			    			"section": "<span class='application'>CompletePolicyProjectZendeskService</span> contains a single policy named <span class='application'>ZendeskService1</span> which is used by the application <span class='application'>CompleteExampleZendeskService</span>."							
+						}
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+                        {
+                             "title": "IBM Documentation link to ",
+                             "description": "Zendesk Service Request node",
+                             "link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=nodes-zendesk-service-request-node",
+                             "type": "web"
+                        }
+                    ]
+                },
+                "actions": 
+				{
+                    "title": "Create Actions",
+                    "details": 
+					[
+                        {
+                            "name": "Import",
+                            "method": "importArtifacts()"
+                        }
+                    ]
+                }
+            },
+            "prepare": 
+			{
+                "overview": 
+				{
+                    "name": "Prepare",
+                    "heading": "This section describes how to complete the message flow configuration using the Connector Discovery process",
+                    "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
+                    "sections": [
+				    {
+                       "section":"<b>Create an Integration Server with a credential vault</b>",
+						  "steps":
+                        {
+                          "type": "ordered",
+                          "details":
+                          [
+                            {
+                                "details": "From the Integration Explorer view in the bottom left corner of the Toolkit, right-click the Integration Servers folder and select the option to <span class='uicontrol'>Create a local integration server</span>. We will leave most of the options with their default values. Type in a value (at least 8 characters long) for the Vault Key property. The instructions later in the tutorial will assume a value of <code>password123</code>. Untick the check box at the bottom of the dialog which is labelled <code>Start Integration Server</code>. Click Finish. The local Integration Server will be created using a project in your Toolkit's workspace as its work directory. We deliberately don't want to start up the server until later in the tutorial, because when the server process runs it will lock the vault from being used by other processes. Before running the server we want to use the Toolkit Connector Discovery process to populate the vault with the credentials needed for communication with Zendesk Service. If you are already familiar with the Connector Discovery process you can now skip over the rest of the instructions in this Prepare section and move straight to the tutorial's Run section, Option 2."
+                            }
+						  ]
+						}
+					},
+					{
+                       "section":"<b>Run the Connector Discovery process</b>",
+						  "steps":
+                        {
+                          "type": "ordered",
+                          "details":
+                          [
+                             {
+                                 "details": "When you imported the tutorial projects in the previous section, <span class='application'>ExampleZendeskServiceFlow</span> in application <span class='application'>ExampleZendeskService</span> will have been opened for you. First, check the properties of the three trace nodes in the messge flow, which are configured ready for deployment on a Windows system (their <code>File path</code> property is set to use the directory <code>C:\\temp</code>). If you are running on a different operating system, or if the file directory is not convenient for you, then feel free to change it. Next, select the Zendesk Service Request node and view its Properties window at the base of the screen. At this stage you should see an error stating that an action must be specified. Every Zendesk Service Request node (in fact, every Discovery Connector node) requires configuration to define what action it should execute against what object in the endpoint system. You make these decisions using the Connector Discovery process. Click the Launch Connector Discovery button."
+							 },							 
+							{
+        "details": "The Launch Connector Discovery wizard will open. The process of connecting to Zendesk Service and discovering information from it, will cause your ZendeskService credentials to be saved in the vault, and your ZendeskService connection information to be saved in a policy. Fill out the three required property values shown below and then click the Launch Discovery button:",
+        "substeps": {
+          "type":"unordered",
+          "details": [
+            {
+              "details": "<strong>Policy Project:</strong> Click the New button and create a policy project named <code>ExamplePolicyProjectZendeskService</code>"
+            },
+            {
+              "details": "<strong>Work directory:</strong> Click the Browse button and navigate to the TEST_SERVER directory in your Toolkit workspace. For example, this would be C:\\workspace\\TEST_SERVER if your Toolkit workspace were at C:\\workspace."
+            },
+            {
+              "details": "<strong>Vault Key:</strong> Type the same vault key which you used when creating your local integration server (named TEST_SERVER) earlier in the tutorial, for example <code>password123</code>"
+            }
+          ]
+		}
+	  }, 
+                            {
+                                 "details": "A new Configure connector node window will open. If you had previously connected to a Zendesk Service system then a list of those connections would be displayed, but in this example the status of the Zendesk Service connector is shown as <code>Not connected</code>. <strong>Before you use the Zendesk Service Request node in a message flow as part of this tutorial, you will need to have access to Zendesk. Underneath where the panel says <code>Not connected</code>, expand the section named <code>Asset</code> and choose the action <code>Retrieve tickets</code>. The list of objects and actions will be replaced with a Connect button. Click the Connect button. A field named Authorization method will appear. Select your chosen authorization option, for example <code>Provide a username, password and client credentials (OAUTH 2.0 PASSWORD)</code> and click Continue. Fill out the requested connection information for your Zendesk Service account including the <code>Endpoint URL</code>, <code>Username</code>, <code>Password</code>, <code>Client ID</code> and <code>Client secret</code>. You may need to wait a few seconds for the connection to be made. If you would like you can add a condition to filter the assets to be returned, but to keep things as simple as possible we don't need such a Where clause; just change the <code>Maximum number of items to retrieve</code> from its initial setting of 10 down to 1, and change the radio button to <code>Process 1 item from the collection</code>."
+							},
+							{
+                                 "details": "At the top of the window click the Save button, and you should see a confirmation message briefly appear. Close the Configure connector window and return to the Toolkit. <strong>It is important to remember this step</strong> otherwise the vault will remain locked and you will be unable to start your integration server TEST_SERVER when you come to test the flow in the last section of the tutorial. You will now find that the properties of the Zendesk Service Request node in the message flow have been updated. Save the message flow.  Explore the properties of the Zendesk Service Request node. The Basic properties tab will now display a short description of <code>Retrieve tickets</code>, along with the <strong>Action</strong> (<code>RETRIEVEALL</code>) and the <strong>Object</strong> (<code>ticket</code>). On the Connection properties tab, the <strong>Policy</strong> will have been configured as <code>{ExamplePolicyProjectZendeskService}:ZendeskService1</code>."
+							}							
+						  ]
+						}
+					}
+             ]
+                },
+                "helpLinks": 
+				{
+                }
+            },
+            "run": 
+			{
+                "overview": 
+				{
+                    "name": "Run",
+                    "heading": "",
+                    "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
+                "sections":[                            
+					           {  
+								"section": "<b>Option 1: Use the Flow Exerciser to test the tutorial scenario</b>",
+                                "steps": {
+                                    "type": "ordered",
+                                    "details": [                                      
+                                        {
+                                        "details": "In the Integration Explorer view of the Toolkit, right-click TEST_SERVER and select the option to Start."
+                                        },
+                                        {
+                                        "details": "Once the server has started, drag and drop deploy the policy project <span class='application'>ExamplePolicyProjectZendeskService</span> in to TEST_SERVER."
+                                        },										
+										{
+                                        "details": "Return to <span class='resource'>ExampleZendeskServiceFlow.msgflow</span> and click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow."
+                                        },
+										{
+                                            "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />. Create a new test message to invoke the HTTP Input node. Use an empty JSON input message like this: <code>{}</code>. Click Send and your message is sent to the HTTPInput node. You will receive an empty JSON message echoed back as a reply. You may also see a highlighted path through the flow. Sometimes there may be a short pause before the data is returned from Zendesk, so you may need to click the View Path icon <img src='http://ot4i.github.io/iib-tutorials/images/icons/iib/viewPath.png' alt='View path' /> in the Flow Exerciser toolbar in order to see the highlighted path carry on past the Zendesk Service Request node and into a Trace node at the end of the message flow. Click on the highlighted path coming out of the Zendesk Service Request node to see the data which has been retrieved displaying an asset."
+										}
+                                        ]
+                                    }
+                            },							   
+							{
+								"section": "<b>Option 2: Using the alternative provided application named CompleteExampleZendeskService to test the tutorial scenario</b>",
+                                "steps": {
+                                    "type": "ordered",
+                                    "details": [                                      
+                                        {
+											"details": "In order to reuse the completed application which is provided with this tutorial, you must configure your integration server with credentials for communicating with your Zendesk Service instance.  Launch a command console session, and run the following command to create these credentials:<br><code>mqsicredentials --work-dir &lt;YourToolkitWorkspace&gt;\\TEST_SERVER  --vault-key password123 --create --credential-type zendeskservice --credential-name CompletePolicyProjectZendeskService_ZendeskService1 --username &lt;YourZendeskServiceUsername&gt; --password &lt;YourZendeskServicePassword&gt;</code>"
+										},
+										{	
+                                        "details": "Back in the Toolkit, in the Integration Explorer view, right-click <code>TEST_SERVER</code> and select the option to Start."
+                                        },
+                                        {
+                                        "details": "Drag and drop deploy the policy project <span class='application'>CompletePolicyProjectZendeskService</span> to <code>TEST_SERVER</code>."
+                                        },
+										{
+                                        "details": "Return to <span class='resource'>CompleteExampleZendeskServiceFlow.msgflow</span> and click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow."
+										},
+										{
+                                            "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />. Create a new test message to invoke the HTTP Input node. Any well-formed JSON will be fine, even something as simple as <code>{&quot;hello&quot;:&quot;world&quot;}</code>. Click Send and your message is sent to the HTTPInput node. You will receive a JSON reply message which is simply an echo of the same data which you sent in. You may also see a highlighted path through the flow. Sometimes there may be a short pause before the data is returned from Zendesk Service, so you may need to click the View Path icon <img src='http://ot4i.github.io/iib-tutorials/images/icons/iib/viewPath.png' alt='View path' /> in the Flow Exerciser toolbar in order to see the highlighted path carry on past the Zendesk Service Request node and into a Trace node at the end of the message flow. Click on the highlighted path coming out of the Zendesk Service Request node to see the data which has been retrieved displaying a ticket."
+										}
+									]
+								}
+							}
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+{
+                             "title": "IBM Documentation link to ",
+                             "description": "Zendesk Service Request node",
+                             "link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=nodes-zendesk-service-request-node",
+                             "type": "web"
+                        },
+						{
+                            "title": "IBM Documentation link to ",
+                            "description": "Testing your message flow by using the Flow exerciser",
+                            "link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/rt26110_.htm",
+							"type": "web"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
