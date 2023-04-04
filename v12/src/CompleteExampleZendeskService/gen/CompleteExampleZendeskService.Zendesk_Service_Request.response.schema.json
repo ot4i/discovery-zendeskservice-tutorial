@@ -1,0 +1,401 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "items": {
+    "type": "object",
+    "properties": {
+      "subject": {
+        "displayOrder": 1,
+        "title": "Subject",
+        "description": "The subject line for the ticket",
+        "type": "string"
+      },
+      "description": {
+        "displayOrder": 2,
+        "title": "Description",
+        "description": "The description for the ticket",
+        "type": "string"
+      },
+      "tags": {
+        "displayOrder": 4,
+        "title": "Tags",
+        "description": "The list of tags that are applied to the ticket, in array format",
+        "type": "array",
+        "items": {
+          "type": "String"
+        }
+      },
+      "type": {
+        "displayOrder": 5,
+        "title": "Type",
+        "description": "The type of the ticket",
+        "enum": [
+          "problem",
+          "incident",
+          "question",
+          "task"
+        ],
+        "type": "string"
+      },
+      "priority": {
+        "displayOrder": 6,
+        "title": "Priority",
+        "description": "The urgency with which the ticket should be addressed. The allowed values are 'urgent', 'high', 'normal', or 'low'.",
+        "enum": [
+          "urgent",
+          "high",
+          "normal",
+          "low"
+        ],
+        "type": "string"
+      },
+      "id": {
+        "displayOrder": 7,
+        "title": "Ticket ID",
+        "description": "The ticket ID. An ID is automatically assigned when the ticket is created.",
+        "type": "number"
+      },
+      "assignee_id": {
+        "displayOrder": 8,
+        "title": "Assignee ID",
+        "description": "The agent's ID that is assigned to the ticket",
+        "type": "number"
+      },
+      "requester_id": {
+        "displayOrder": 10,
+        "title": "Requester ID",
+        "description": "The user who requested the ticket",
+        "type": "number"
+      },
+      "status": {
+        "displayOrder": 12,
+        "title": "Status",
+        "description": "The state of the ticket. The allowed values are 'new', 'open', 'pending', 'hold', 'solved', or 'closed'.",
+        "enum": [
+          "new",
+          "open",
+          "pending",
+          "hold",
+          "solved",
+          "closed"
+        ],
+        "type": "string"
+      },
+      "email_cc_ids": {
+        "displayOrder": 13,
+        "title": "Email CC IDs",
+        "description": "The IDs of agents or end users that are on CC on the ticket",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "allow_attachments": {
+        "displayOrder": 15,
+        "title": "Allow attachments",
+        "description": "Indicates whether to allow agents to add attachments to a comment. The default value is true.",
+        "type": "boolean"
+      },
+      "allow_channelback": {
+        "displayOrder": 13,
+        "title": "Allow channelback",
+        "description": "Set to false if channel-back is disabled, else set to true. This property is only applicable for channels framework ticket.",
+        "type": "boolean"
+      },
+      "brand_id": {
+        "displayOrder": 15,
+        "title": "Brand ID",
+        "description": "The ID of the brand that is associated with the ticket. Only applicable to Enterprise account.",
+        "type": "number"
+      },
+      "collaborator_ids": {
+        "displayOrder": 5,
+        "title": "Collaborator IDs",
+        "description": "The IDs of users who are CC'ed in the ticket",
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "created_at": {
+        "displayOrder": 18,
+        "title": "Created at",
+        "description": "The date the record was created in ISO 8601 UTC format, YYYY-MM-DDTHH:MM:SSZ",
+        "type": "string",
+        "format": "date-time"
+      },
+      "due_at": {
+        "displayOrder": 20,
+        "title": "Due date",
+        "description": "The due date of a ticket. Only applicable for ticket type 'task'.",
+        "type": "string"
+      },
+      "external_id": {
+        "displayOrder": 22,
+        "title": "External ID",
+        "description": "An ID that is used to link Zendesk Support tickets to local records",
+        "type": "string"
+      },
+      "follower_ids": {
+        "displayOrder": 23,
+        "title": "Follower IDs",
+        "description": "The IDs of agents that are following the ticket",
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "followup_ids": {
+        "displayOrder": 25,
+        "title": "Follow-up IDs",
+        "description": "The IDs of the follow-ups created from the ticket. The IDs are only visible after the ticket is closed.",
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "forum_topic_id": {
+        "displayOrder": 26,
+        "title": "Forum topic ID",
+        "description": "The topic of the ticket that is originated from the Zendesk web portal. The web portal is deprecated.",
+        "type": "number"
+      },
+      "group_id": {
+        "displayOrder": 27,
+        "title": "Group ID",
+        "description": "The group that the ticket has been assigned",
+        "type": "number"
+      },
+      "has_incidents": {
+        "displayOrder": 28,
+        "title": "Has incidents",
+        "description": "Set to true if a ticket type is problem and has one or more incidents linked to it, else set to false",
+        "type": "boolean"
+      },
+      "is_public": {
+        "displayOrder": 29,
+        "title": "Is public",
+        "description": "Indicates whether the comments are public",
+        "type": "boolean"
+      },
+      "organization_id": {
+        "displayOrder": 33,
+        "title": "Organization ID",
+        "description": "The ID of an organization associated with the requester",
+        "type": "number"
+      },
+      "problem_id": {
+        "displayOrder": 34,
+        "title": "Problem ID",
+        "description": "The ID of the problem with which the incident is linked. Only applicable for ticket type 'incident'.",
+        "type": "number"
+      },
+      "raw_subject": {
+        "displayOrder": 1,
+        "title": "Raw subject",
+        "description": "The dynamic content placeholder, if present, or the subject's value, if not",
+        "type": "string"
+      },
+      "recipient": {
+        "displayOrder": 36,
+        "title": "Recipient",
+        "description": "The original recipient email address of the ticket",
+        "type": "string"
+      },
+      "satisfaction_rating": {
+        "displayOrder": 40,
+        "title": "Satisfaction rating",
+        "description": "The satisfaction rating of the ticket, if it exists, or the satisfaction state, such as 'offered' or 'unoffered'",
+        "type": "object"
+      },
+      "sharing_agreement_ids": {
+        "displayOrder": 40,
+        "title": "Sharing agreement IDs",
+        "description": "The IDs of the sharing agreements used for the ticket",
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "submitter_id": {
+        "displayOrder": 42,
+        "title": "Submitter ID",
+        "description": "The user who submitted the ticket. The submitter will be the author of the first comment on the ticket.",
+        "type": "number"
+      },
+      "ticket_form_id": {
+        "displayOrder": 43,
+        "title": "Ticket form ID",
+        "description": "The ID of the ticket form to render for the ticket",
+        "type": "number"
+      },
+      "updated_at": {
+        "displayOrder": 44,
+        "title": "Updated at",
+        "description": "The date the record was last updated in ISO 8601 UTC format, YYYY-MM-DDTHH:MM:SSZ",
+        "type": "string",
+        "format": "date-time"
+      },
+      "url": {
+        "displayOrder": 46,
+        "title": "URL",
+        "description": "The API URL of the ticket",
+        "type": "string"
+      },
+      "via": {
+        "displayOrder": 47,
+        "title": "Via",
+        "description": "Describes how the object was created",
+        "type": "object",
+        "properties": {
+          "channel": {
+            "displayOrder": 1,
+            "title": "Channel",
+            "description": "The channel the ticket or event was created, described through channel type or ID",
+            "type": "string"
+          },
+          "source": {
+            "displayOrder": 2,
+            "title": "Source",
+            "description": "The source attribute that provides information about the source of the ticket",
+            "type": "object",
+            "properties": {
+              "to": {
+                "displayOrder": 1,
+                "title": "To",
+                "description": " ",
+                "type": "object"
+              },
+              "from": {
+                "displayOrder": 2,
+                "title": "From",
+                "description": " ",
+                "type": "object"
+              },
+              "rel": {
+                "displayOrder": 3,
+                "title": "Rel",
+                "description": " ",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "ticket_fields": {
+        "displayOrder": 50,
+        "title": "Ticket custom fields",
+        "description": "The values of the custom fields.",
+        "type": "object",
+        "properties": {
+          "id__10207880743961": {
+            "title": "Workaround",
+            "display": {
+              "multiLine": true
+            },
+            "type": "string"
+          },
+          "id__10207195973145": {
+            "title": "Subcategory (Enquiry)",
+            "enum": [
+              "antivirus",
+              "internal_application",
+              "email"
+            ],
+            "type": "string"
+          },
+          "id__10207397702937": {
+            "title": "Subcategory (Hardware)",
+            "enum": [
+              "cpu",
+              "disk",
+              "memory",
+              "keyboard",
+              "monitor",
+              "mouse"
+            ],
+            "type": "string"
+          },
+          "id__7218307693337": {
+            "title": "multiline_test",
+            "display": {
+              "multiLine": true
+            },
+            "type": "string"
+          },
+          "id__10206819286041": {
+            "title": "Category",
+            "enum": [
+              "inquiry/help",
+              "software",
+              "hardware",
+              "network"
+            ],
+            "type": "string"
+          },
+          "id__10425747441305": {
+            "title": "Instance id",
+            "type": "string"
+          },
+          "id__7226959859609": {
+            "title": "tagger_test",
+            "description": "tagger_test",
+            "enum": [
+              "apple",
+              "pecan"
+            ],
+            "type": "string"
+          },
+          "id__10207167794585": {
+            "title": "Subcategory (Software)",
+            "enum": [
+              "email_clone",
+              "operating_system"
+            ],
+            "type": "string"
+          },
+          "id__7123832950425": {
+            "title": "ticket_comment",
+            "type": "string"
+          },
+          "id__7085487783577": {
+            "title": "test",
+            "type": "string"
+          },
+          "id__10207849452441": {
+            "title": "RCA",
+            "display": {
+              "multiLine": true
+            },
+            "type": "string"
+          },
+          "id__10207594065561": {
+            "title": "Subcategory (Network)",
+            "enum": [
+              "dhcp",
+              "dns",
+              "ip_address",
+              "vpn",
+              "wireless"
+            ],
+            "type": "string"
+          },
+          "id__7218237195161": {
+            "title": "multiselect_test",
+            "description": " Allowed values are one,two,1,2",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "title": "Ticket",
+    "additionalProperties": false
+  },
+  "type": "array",
+  "title": "Ticket"
+}
