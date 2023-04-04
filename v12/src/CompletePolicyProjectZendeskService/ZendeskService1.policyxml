@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<policies>
-  <policy policyType="zendeskservice" policyName="ZendeskService1" policyTemplate="online_v1_oauth2_password">
-    <credentialName>CompletePolicyProjectZendeskService_ZendeskService1</credentialName>
-    <applicationVersion>v1</applicationVersion>
-    <applicationType>online</applicationType>
-    <authenticationMethod>OAUTH2_PASSWORD</authenticationMethod>
-    <subdomain>REPLACE_WITH_YOUR_SUBDOMAIN</subdomain>
-  </policy>
-</policies>
+<?xml version="1.0" encoding="UTF-8"?><policies><policy policyName="ZendeskService1" policyTemplate="online_v1_basic_api_key" policyType="zendeskservice"><applicationType>online</applicationType><applicationVersion>v1</applicationVersion><authenticationMethod>BASIC_API_KEY</authenticationMethod><subdomain>REPLACE_WITH_YOUR_SUBDOMAIN</subdomain><credentialName>CompletePolicyProjectZendeskService_ZendeskService1</credentialName></policy></policies>
