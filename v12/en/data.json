@@ -268,7 +268,7 @@
                                         "details": "Back in the Toolkit, in the Integration Explorer view, right-click <code>TEST_SERVER</code> and select the option to Start."
                                         },
                                         {
-                                        "details": "Drag and drop deploy the policy project <span class='application'>CompletePolicyProjectZendeskService</span> to <code>TEST_SERVER</code>."
+                                        "details": "Open the policy named <span class='application'>ZendeskService1.policyxml</span> which is found inside the policy project <span class='application'>CompletePolicyProjectZendeskService</span>. The policy has already been configured with a reference to the credential which you just created. Edit the following properties with relevant values for your own endpoint system: <code>Subdomain</code>. Save the policy then drag and drop deploy the policy project <span class='application'>CompletePolicyProjectZendeskService</span> to <code>TEST_SERVER</code>."
                                         },
 										{
                                         "details": "Return to <span class='resource'>CompleteExampleZendeskServiceFlow.msgflow</span> and click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow."
